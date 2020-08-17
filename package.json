@@ -18,7 +18,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:bundly/dash.git"
+    "url": "git@github.com:bundly/dash-beta.git"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -42,7 +42,7 @@
     ]
   },
   "bugs": {
-    "url": "https://github.com/bundly/dash/issues"
+    "url": "https://github.com/bundly/dash-beta/issues"
   },
   "jest": {
     "collectCoverageFrom": [
