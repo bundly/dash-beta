@@ -8,7 +8,8 @@ import {
   CardContent,
   CardHeader,
   Divider,
-  makeStyles
+  makeStyles,
+  colors
 } from '@material-ui/core';
 
 const data = {
@@ -22,8 +23,7 @@ const data = {
           id: uuid(),
           title: 'Write Blog',
           description: 'Can AI make memes',
-          label: '30 mins',
-          draggable: false
+          label: '30 mins'
         },
         {
           id: uuid(),
@@ -63,8 +63,19 @@ const MyTasks = ({ className, ...rest }) => {
           data={tasks}
           editable
           canAddLanes
-          draggable
-          style={{ backgroundColor: 'grey', height: '440px' }}
+          cardDraggable
+          editLaneTitle
+          style={{
+            backgroundColor: '#ebecf0',
+            height: '440px'
+          }}
+          laneStyle={{
+            backgroundColor: colors.common.white
+          }}
+          cardStyle={{
+            backgroundColor: colors.deepOrange[200],
+            primaryColor: 'white !important' // TODO: my sad attempt to make text white
+          }}
         />
       </CardContent>
     </Card>
