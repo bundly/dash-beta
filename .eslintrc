@@ -35,6 +35,7 @@
     "no-console": "off",
     "no-param-reassign": "off",
     "no-plusplus": "off",
+    "react/jsx-curly-newline": "off",
     "react-hooks/exhaustive-deps": "off",
     "react/destructuring-assignment": "off",
     "react/prop-types": "off",
