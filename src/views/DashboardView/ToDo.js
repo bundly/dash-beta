@@ -10,7 +10,7 @@ import {
   CardContent,
   CardHeader,
   Divider,
-  makeStyles,
+  makeStyles
 } from '@material-ui/core';
 import initData from './data';
 
@@ -32,10 +32,10 @@ const useStyles = makeStyles(() => ({
 
 const ToDo = ({ className, ...rest }) => {
   const classes = useStyles();
-  const [value, setValue] = useState(localStorage.getItem('todo')
-  ?? initData);
-  localStorage.setItem('todo', value);
+  const [value, setValue] = useState(localStorage.getItem('todo') ?? initData);
   const [selectedTab, setSelectedTab] = useState('write');
+  localStorage.setItem('todo', value);
+
   useEffect(() => {
     setValue(localStorage.getItem('todo'));
     const updateStorage = setInterval(() => {
@@ -46,18 +46,13 @@ const ToDo = ({ className, ...rest }) => {
       clearInterval(updateStorage);
     };
   }, []);
+
   return (
-    <Card
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <Card className={clsx(classes.root, className)} {...rest}>
       <CardHeader title="To-Do" />
       <Divider />
       <CardContent>
-        <Box
-          height={300}
-          position="relative"
-        >
+        <Box height={300} position="relative">
           <ReactMde
             value={value}
             onChange={setValue}
@@ -66,10 +61,10 @@ const ToDo = ({ className, ...rest }) => {
             minEditorHeight={650}
             minPreviewHeight={650}
             generateMarkdownPreview={markdown =>
-              Promise.resolve(converter.makeHtml(markdown))}
+              Promise.resolve(converter.makeHtml(markdown))
+            }
           />
         </Box>
-
       </CardContent>
     </Card>
   );

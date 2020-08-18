@@ -24,10 +24,24 @@ import {
 } from 'react-feather';
 import NavItem from './NavItem';
 
+function getAvatar() {
+  const bundlyToken = localStorage.getItem('bundly-token');
+  let avatarUrl;
+  if (bundlyToken) avatarUrl = JSON.parse(atob(bundlyToken)).avatar;
+  return avatarUrl;
+}
+
+function getUsername() {
+  const bundlyToken = localStorage.getItem('bundly-token');
+  let username;
+  if (bundlyToken) username = JSON.parse(atob(bundlyToken)).username;
+  return username;
+}
+
 const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith'
+  avatar: getAvatar() || '/static/images/avatars/avatar_6.png',
+  jobTitle: 'Software Developer',
+  name: `@${getUsername()}` || 'Anonymous User'
 };
 
 const items = [
@@ -101,41 +115,25 @@ const NavBar = ({ onMobileClose, openMobile }) => {
   }, [location.pathname]);
 
   const content = (
-    <Box
-      height="100%"
-      display="flex"
-      flexDirection="column"
-    >
-      <Box
-        alignItems="center"
-        display="flex"
-        flexDirection="column"
-        p={2}
-      >
+    <Box height="100%" display="flex" flexDirection="column">
+      <Box alignItems="center" display="flex" flexDirection="column" p={2}>
         <Avatar
           className={classes.avatar}
           component={RouterLink}
           src={user.avatar}
           to="/app/account"
         />
-        <Typography
-          className={classes.name}
-          color="textPrimary"
-          variant="h5"
-        >
+        <Typography className={classes.name} color="textPrimary" variant="h5">
           {user.name}
         </Typography>
-        <Typography
-          color="textSecondary"
-          variant="body2"
-        >
+        <Typography color="textSecondary" variant="body2">
           {user.jobTitle}
         </Typography>
       </Box>
       <Divider />
       <Box p={2}>
         <List>
-          {items.map((item) => (
+          {items.map(item => (
             <NavItem
               href={item.href}
               key={item.title}

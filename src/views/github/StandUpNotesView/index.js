@@ -62,13 +62,7 @@ const StandUpNotes = props => {
             <Divider />
             <CardContent>
               <Grid container spacing={2}>
-                <Grid
-                  item
-                  lg={6}
-                  sm={6}
-                  xl={6}
-                  xs={12}
-                >
+                <Grid item lg={6} sm={6} xl={6} xs={12}>
                   <ReactMde
                     value={value}
                     onChange={setValue}
@@ -77,17 +71,16 @@ const StandUpNotes = props => {
                     minEditorHeight={props.height ?? 650}
                     minPreviewHeight={props.height ?? 650}
                     generateMarkdownPreview={markdown =>
-                      Promise.resolve(converter.makeHtml(markdown))}
+                      Promise.resolve(converter.makeHtml(markdown))
+                    }
                   />
                 </Grid>
-                <Grid
-                  item
-                  lg={6}
-                  sm={6}
-                  xl={6}
-                  xs={12}
-                >
-                  <ReactMarkdown source={value} />
+                <Grid item lg={6} sm={6} xl={6} xs={12}>
+                  <Card>
+                    <CardContent>
+                      <ReactMarkdown source={value} />
+                    </CardContent>
+                  </Card>
                 </Grid>
               </Grid>
             </CardContent>
