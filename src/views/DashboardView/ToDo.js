@@ -52,7 +52,7 @@ const ToDo = ({ className, ...rest }) => {
       <CardHeader title="To-Do" />
       <Divider />
       <CardContent>
-        <Box height={300} position="relative">
+        <Box position="relative">
           <ReactMde
             value={value}
             onChange={setValue}

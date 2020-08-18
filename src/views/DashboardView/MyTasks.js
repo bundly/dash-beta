@@ -47,14 +47,10 @@ const useStyles = makeStyles(() => ({
   root: {},
   actions: {
     justifyContent: 'flex-end'
-  },
-  reactTrelloBoard: {
-    border: 0,
-    backgroundColor: 'white'
   }
 }));
 
-const LatestOrders = ({ className, ...rest }) => {
+const MyTasks = ({ className, ...rest }) => {
   const classes = useStyles();
   const [tasks] = useState(data);
 
@@ -68,15 +64,15 @@ const LatestOrders = ({ className, ...rest }) => {
           editable
           canAddLanes
           draggable
-          style={{ backgroundColor: 'light-orange', height: '440px' }}
+          style={{ backgroundColor: 'grey', height: '440px' }}
         />
       </CardContent>
     </Card>
   );
 };
 
-LatestOrders.propTypes = {
+MyTasks.propTypes = {
   className: PropTypes.string
 };
 
-export default LatestOrders;
+export default MyTasks;
