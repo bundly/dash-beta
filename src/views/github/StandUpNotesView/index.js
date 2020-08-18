@@ -5,12 +5,14 @@ import {
   Divider,
   makeStyles,
   Card,
+  Grid,
   CardContent,
   CardHeader
 } from '@material-ui/core';
 import ReactMde from 'react-mde';
 import { Converter as ShowdownConverter } from 'showdown';
 import 'react-mde/lib/styles/css/react-mde-all.css';
+import ReactMarkdown from 'react-markdown';
 
 import Page from 'src/components/Page';
 import initData from './data';
@@ -59,16 +61,35 @@ const StandUpNotes = props => {
             <CardHeader title="STANDUP NOTES" />
             <Divider />
             <CardContent>
-              <ReactMde
-                value={value}
-                onChange={setValue}
-                selectedTab={selectedTab}
-                onTabChange={setSelectedTab}
-                minEditorHeight={props.height ?? 650}
-                minPreviewHeight={props.height ?? 650}
-                generateMarkdownPreview={markdown =>
-                  Promise.resolve(converter.makeHtml(markdown))}
-              />
+              <Grid container spacing={2}>
+                <Grid
+                  item
+                  lg={6}
+                  sm={6}
+                  xl={6}
+                  xs={12}
+                >
+                  <ReactMde
+                    value={value}
+                    onChange={setValue}
+                    selectedTab={selectedTab}
+                    onTabChange={setSelectedTab}
+                    minEditorHeight={props.height ?? 650}
+                    minPreviewHeight={props.height ?? 650}
+                    generateMarkdownPreview={markdown =>
+                      Promise.resolve(converter.makeHtml(markdown))}
+                  />
+                </Grid>
+                <Grid
+                  item
+                  lg={6}
+                  sm={6}
+                  xl={6}
+                  xs={12}
+                >
+                  <ReactMarkdown source={value} />
+                </Grid>
+              </Grid>
             </CardContent>
           </Card>
         </Box>

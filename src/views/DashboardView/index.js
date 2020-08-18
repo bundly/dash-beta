@@ -8,11 +8,11 @@ import Page from 'src/components/Page';
 import Budget from './Budget';
 import LatestOrders from './LatestOrders';
 import LatestProducts from './LatestProducts';
-import Sales from './Sales';
+import StandUpNotes from '../github/StandUpNotesView';
 import TasksProgress from './TasksProgress';
 import TotalCustomers from './TotalCustomers';
 import TotalProfit from './TotalProfit';
-import TrafficByDevice from './TrafficByDevice';
+import ToDo from './ToDo';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -79,7 +79,8 @@ const Dashboard = () => {
             xl={9}
             xs={12}
           >
-            <Sales />
+            {/* <Sales /> */}
+            <StandUpNotes />
           </Grid>
           <Grid
             item
@@ -88,7 +89,7 @@ const Dashboard = () => {
             xl={3}
             xs={12}
           >
-            <TrafficByDevice />
+            <ToDo />
           </Grid>
           <Grid
             item
