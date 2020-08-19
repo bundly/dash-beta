@@ -1,39 +1,44 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import DashboardLayout from 'src/layouts/DashboardLayout';
-import MainLayout from 'src/layouts/MainLayout';
 import AccountView from 'src/views/account/AccountView';
 import CustomerListView from 'src/views/customer/CustomerListView';
 import DashboardView from 'src/views/DashboardView';
 import LoginView from 'src/views/auth/LoginView';
 import NotFoundView from 'src/views/errors/NotFoundView';
 import StandUpNotesView from 'src/views/github/StandUpNotesView';
-import RegisterView from 'src/views/auth/RegisterView';
+import AuthCallbackView from 'src/views/auth/AuthCallback';
 import SettingsView from 'src/views/settings/SettingsView';
 
 const routes = [
   {
+    path: '/',
+    element: <LoginView />
+  },
+  {
+    path: 'auth',
+    element: <AuthCallbackView />
+  },
+  {
     path: 'app',
     element: <DashboardLayout />,
     children: [
+      { path: 'dashboard', element: <DashboardView /> },
       { path: 'standups', element: <StandUpNotesView /> },
       { path: 'account', element: <AccountView /> },
       { path: 'customers', element: <CustomerListView /> },
-      { path: 'dashboard', element: <DashboardView /> },
       { path: 'settings', element: <SettingsView /> },
+      { path: '/', element: <Navigate to="/app/dashboard" /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
   },
   {
-    path: '/',
-    element: <MainLayout />,
-    children: [
-      { path: 'login', element: <LoginView /> },
-      { path: 'register', element: <RegisterView /> },
-      { path: '404', element: <NotFoundView /> },
-      { path: '/', element: <Navigate to="/app/dashboard" /> },
-      { path: '*', element: <Navigate to="/404" /> }
-    ]
+    path: '/404',
+    element: <NotFoundView />
+  },
+  {
+    path: '*',
+    element: <Navigate to="/404" />
   }
 ];
 
