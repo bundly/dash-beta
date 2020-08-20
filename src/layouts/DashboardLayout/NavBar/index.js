@@ -14,13 +14,10 @@ import {
 import {
   AlertCircle as AlertCircleIcon,
   Trello as TrelloIcon,
-  Lock as LockIcon,
   Settings as SettingsIcon,
   FileText as FileTextIcon,
   User as UserIcon,
   List as ListIcon,
-  Users as UsersIcon,
-  Bell as BellIcon
 } from 'react-feather';
 import NavItem from './NavItem';
 
@@ -67,17 +64,12 @@ const items = [
     title: 'Account'
   },
   {
-    href: '/404',
-    icon: BellIcon,
-    title: 'Notifications'
-  },
-  {
     href: '/app/settings',
     icon: SettingsIcon,
     title: 'Settings'
   },
   {
-    href: 'https://github.com/bundly/dash/pull/51',
+    href: 'https://github.com/bundly/dash-beta/issues/new',
     icon: AlertCircleIcon,
     title: 'Report an Issue',
     externalLink: true
@@ -108,6 +100,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
     if (openMobile && onMobileClose) {
       onMobileClose();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
   const content = (

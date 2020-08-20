@@ -37,7 +37,7 @@ const StandUpNotes = props => {
         setValue(yesterdayNotes(data.data, currentTime.toISOString()));
       }
     });
-  }, []);
+  });
 
   return (
     <Box>
@@ -59,14 +59,13 @@ const StandUpNotes = props => {
                 }
               />
             </Grid>
-            {/* TODO: Add this back in after figuring out cause of the issue */}
-            {/* <Grid item lg={6} sm={6} xl={6} xs={12}>
+            <Grid item lg={6} sm={6} xl={6} xs={12}>
               <Card>
                 <CardContent>
                   <ReactMarkdown source={value} />
                 </CardContent>
               </Card>
-            </Grid> */}
+            </Grid>
           </Grid>
         </CardContent>
       </Card>
