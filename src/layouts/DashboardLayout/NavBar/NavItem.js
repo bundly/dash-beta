@@ -45,6 +45,7 @@ const NavItem = ({
   href,
   icon: Icon,
   title,
+  externalLink,
   ...rest
 }) => {
   const classes = useStyles();
@@ -79,7 +80,8 @@ NavItem.propTypes = {
   className: PropTypes.string,
   href: PropTypes.string,
   icon: PropTypes.elementType,
-  title: PropTypes.string
+  title: PropTypes.string,
+  externalLink: PropTypes.bool
 };
 
 export default NavItem;

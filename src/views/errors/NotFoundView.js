@@ -40,23 +40,25 @@ const NotFoundView = () => {
             404: The page you are looking for isn’t here
           </Typography>
           <Typography align="center" color="textPrimary" variant="subtitle2">
-            You either tried some shady route or you came here by mistake.
+            You either tried some shady route or you aren't supposed to be here yet!
             <br />
             Aww don&apos;t worry, let&apos;s take you back home
             <br />
             <br />
             <br />
-            <Button color="primary" fullWidth variant="outlined">
-              <h2>
-                <NavLink to="/">TAKE ME BACKK</NavLink>
-              </h2>
-            </Button>
+            <NavLink to="/app/dashboard">
+              <Button color="primary" fullWidth variant="outlined">
+                <h2>
+                  TAKE ME BACK!
+                </h2>
+              </Button>
+            </NavLink>
           </Typography>
           <Box textAlign="center">
             <img
               alt="Under development"
               className={classes.image}
-              src="/static/images/undraw_page_not_found_su7k.svg"
+              src="/static/images/notfound.svg"
             />
           </Box>
         </Container>

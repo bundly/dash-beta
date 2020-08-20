@@ -6,6 +6,7 @@ const useStyles = makeStyles(() => createStyles({
       boxSizing: 'border-box',
       margin: 0,
       padding: 0,
+      'font-family': 'Arial, Helvetica, sans-serif'
     },
     html: {
       '-webkit-font-smoothing': 'antialiased',
