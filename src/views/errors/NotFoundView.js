@@ -40,7 +40,7 @@ const NotFoundView = () => {
             404: The page you are looking for isn’t here
           </Typography>
           <Typography align="center" color="textPrimary" variant="subtitle2">
-            You either tried some shady route or you aren't supposed to be here yet!
+            You either tried some shady route or you aren&apos;t supposed to be here yet!
             <br />
             Aww don&apos;t worry, let&apos;s take you back home
             <br />
