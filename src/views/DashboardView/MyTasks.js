@@ -73,7 +73,7 @@ const MyTasks = ({ className, ...rest }) => {
             backgroundColor: colors.common.white
           }}
           cardStyle={{
-            backgroundColor: '#ebecf0',
+            backgroundColor: colors.blueGrey[50],
             primaryColor: 'white !important' // TODO: my sad attempt to make text white
           }}
         />
