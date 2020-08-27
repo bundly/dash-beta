@@ -11,7 +11,7 @@ import {
   colors
 } from '@material-ui/core';
 
-import { loadTrelloState, saveTrelloState } from './localStorage';
+import { loadTrelloState, saveTrelloState } from '../../utils/localStorage';
 
 const useStyles = makeStyles(() => ({
   root: {},

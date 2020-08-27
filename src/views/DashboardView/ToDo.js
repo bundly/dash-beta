@@ -12,7 +12,7 @@ import {
   Divider,
   makeStyles
 } from '@material-ui/core';
-import { todoData as initData } from './data';
+import { todoData as initData } from '../../utils/placeHolderGen';
 
 const converter = new ShowdownConverter({
   tables: true,
