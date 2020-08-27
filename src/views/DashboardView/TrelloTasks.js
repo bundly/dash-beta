@@ -35,15 +35,17 @@ const MyTasks = ({ className, ...rest }) => {
           canAddLanes
           cardDraggable
           editLaneTitle
-          onDataChange={updatedData =>
-            updateTasks(saveTrelloState(updatedData))
-          }
+          onDataChange={updatedData => {
+            updateTasks(updatedData);
+            saveTrelloState(updatedData);
+          }}
           style={{
             backgroundColor: '#ebecf0',
-            height: '440px'
+            height: '500px'
           }}
           laneStyle={{
-            backgroundColor: colors.common.white
+            backgroundColor: colors.common.white,
+            maxHeight: '480px'
           }}
           cardStyle={{
             backgroundColor: colors.deepOrange[200],
