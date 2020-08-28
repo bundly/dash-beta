@@ -37,17 +37,16 @@ const StandUpNotes = props => {
         setValue(yesterdayNotes(data.data, currentTime.toISOString()));
       }
     });
-    // eslint-disable-next-line
-  }, []);
+  });
 
   return (
     <Box>
       <Card>
-        <CardHeader title="STANDUP NOTES" />
+        <CardHeader title="Daily Standup" />
         <Divider />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item lg={6} sm={6} xl={6} xs={12}>
+            <Grid item lg={12} sm={12} xl={12} xs={12}>
               <ReactMde
                 value={value}
                 onChange={setValue}
