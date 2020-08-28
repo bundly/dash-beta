@@ -7,8 +7,10 @@ import AboutImage from '../../assets/Images/abstract-595.png';
 import ContributeImage from '../../assets/Images/bundlybox.png';
 import host from '../config';
 import '../../scss/login.scss';
-
+import { colors } from '@material-ui/core';
 const loginUrl = `${host}/auth/github/login`;
+
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -44,19 +46,21 @@ const Login = ({ className, ...rest }) => {
             <div className="content__wrapper">
               <header className="header">
                 <Typography
-                  color="textPrimary"
+                  
                   variant="h1"
                   style={{
                     display: 'flex',
                     justifyContent: 'center',
-                    fontSize: '8em',
+                    fontSize: '5em',
+                    letterSpacing:'0.2em',
+                    color:colors.blueGrey[600],
                     fontWeight: '200'
                   }}
                 >
                   BUNDLY
                 </Typography>
               </header>
-              <p className="coords">
+              <p className="coords" style={{color:colors.blueGrey[500]}}>
                 S 75&deg; 6&apos; 0.027&quot; / E 123&deg; 19&apos; 59.998&quot;
               </p>
               <div className="ellipses-container">
@@ -64,7 +68,7 @@ const Login = ({ className, ...rest }) => {
                 <div className="ellipses ellipses__outer--thin" />
                 <div className="ellipses ellipses__outer--thick" />
               </div>
-              <div className="scroller">
+              <div className="scroller" style={{color:colors.blueGrey[500]}}>
                 <p className="page-title">MLH</p>
                 <div className="timeline">
                   <span className="timeline__unit" />
@@ -89,7 +93,7 @@ const Login = ({ className, ...rest }) => {
         <div className="features-container">
           <div className="features slide">
             <div className="text-container">
-              <div className="intro-text">
+              <div className="intro-text" style={{color:colors.blueGrey[500]}}>
                 <h1>Generate Standup Notes in markdown automatically</h1>
                 <p>
                   Bundly Looks through the Pull Requests Reviewed, Issues
@@ -112,7 +116,7 @@ const Login = ({ className, ...rest }) => {
 
           <div className="features slide">
             <div className="text-container">
-              <div className="intro-text">
+              <div className="intro-text" style={{color:colors.blueGrey[500]}}>
                 <h1>Access internal discussions instantly</h1>
                 <p>
                   Quickly search through MLH Fellowship Org discussions with the
@@ -130,7 +134,7 @@ const Login = ({ className, ...rest }) => {
 
           <div className="features slide">
             <div className="text-container">
-              <div className="intro-text">
+              <div className="intro-text" style={{color:colors.blueGrey[500]}}>
                 <h1>Never miss out on the important stuff</h1>
                 <p>
                   Receive personalized notifications for your repositories
@@ -163,7 +167,7 @@ const Login = ({ className, ...rest }) => {
 
           <div className="features slide">
             <div className="text-container">
-              <div className="intro-text">
+              <div className="intro-text" style={{color:colors.blueGrey[500]}}>
                 <h1>Track tasks easily</h1>
                 <p>Add notifications from github to your ToDo list directly</p>
               </div>
@@ -179,7 +183,7 @@ const Login = ({ className, ...rest }) => {
 
         <div className="about slide">
           <div className="text-container">
-            <div className="intro-text">
+            <div className="intro-text" style={{color:colors.blueGrey[500]}}>
               <h1>What is Bundly?</h1>
               <ul>
                 <li>Let Bundly do its work, so you can focus on yours.</li>
@@ -200,11 +204,11 @@ const Login = ({ className, ...rest }) => {
         </div>
 
         <div className="contribute slide">
-          <div className="img-container">
+          <div className="img-container" style={{color:colors.blueGrey[500]}}>
             <img src={ContributeImage} alt="ContributeImg" />
             <h2>Let&#39;s set up your developer dashboard</h2>
           </div>
-          <div className="btn-container">
+          <div className="btn-container" >
             <a href={loginUrl} className="contribute-button">
               Login to Bundly
             </a>
@@ -217,7 +221,7 @@ const Login = ({ className, ...rest }) => {
           </div>
         </div>
 
-        <div className="copyright">Copyright &copy; 2020 Bundly</div>
+        <div className="copyright" style={{color:colors.blueGrey[500]}}>Copyright &copy; 2020 Bundly</div>
       </div>
     </div>
   );

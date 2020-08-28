@@ -178,7 +178,6 @@ $white: #fff;
   overflow: hidden;
 
   .page-title {
-    font-family: "Playfair Display", serif;
     letter-spacing: 0.5rem;
     float: left;
     margin-top: 1rem;
@@ -413,8 +412,8 @@ $white: #fff;
   line-height: 1;
   flex-basis: 50%;
   padding: 1em;
-  transition: all 250ms linear;
-  background-color: #ebedef;
+  transition: transform 250ms linear;
+  background-color: #f4f6f8;
 }
 
 .contribute-button:hover,
@@ -564,7 +563,8 @@ $white: #fff;
   .features:nth-child(even)::after,
   .slide:nth-child(odd)::after,
   .slide:nth-child(even)::after {
-    font-size: 1.1em;
+    color:rgb(96, 125, 139);
+    font-size: 1em;
     position: absolute;
     top: 50%;
     z-index: 10;
