@@ -12,11 +12,12 @@ import {
   makeStyles
 } from '@material-ui/core';
 import {
-  BarChart as BarChartIcon,
+  AlertCircle as AlertCircleIcon,
+  Trello as TrelloIcon,
   Settings as SettingsIcon,
-  ShoppingBag as ShoppingBagIcon,
+  FileText as FileTextIcon,
   User as UserIcon,
-  Users as UsersIcon
+  List as ListIcon,
 } from 'react-feather';
 import NavItem from './NavItem';
 
@@ -36,25 +37,26 @@ function getUsername() {
 
 const user = {
   avatar: getAvatar() || '/static/images/avatars/avatar_6.png',
-  jobTitle: 'Software Developer',
+  // TODO: Add
+  jobTitle: `Hi, ${getUsername()}`,
   name: `@${getUsername()}` || 'Anonymous User'
 };
 
 const items = [
   {
     href: '/app/dashboard',
-    icon: BarChartIcon,
+    icon: TrelloIcon,
     title: 'Dashboard'
   },
   {
-    href: '/app/noter',
-    icon: UsersIcon,
-    title: 'Noter'
+    href: '/app/standups',
+    icon: FileTextIcon,
+    title: 'Daily Standup'
   },
   {
-    href: '/app/standups',
-    icon: ShoppingBagIcon,
-    title: 'Stand Ups'
+    href: '/app/noter',
+    icon: ListIcon,
+    title: 'Notes'
   },
   {
     href: '/app/account',
@@ -65,6 +67,12 @@ const items = [
     href: '/app/settings',
     icon: SettingsIcon,
     title: 'Settings'
+  },
+  {
+    href: 'https://github.com/bundly/dash-beta/issues/new',
+    icon: AlertCircleIcon,
+    title: 'Report an Issue',
+    externalLink: true
   }
 ];
 
@@ -120,6 +128,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
               key={item.title}
               title={item.title}
               icon={item.icon}
+              externalLink={item.externalLink}
             />
           ))}
         </List>
