@@ -41,7 +41,8 @@ const StandUpNotes = ({ className, ...rest }) => {
         setValue(yesterdayNotes(data.data, currentTime.toISOString()));
       }
     });
-  });
+  // eslint-disable-next-line
+  }, []);
 
   return (
     <Box>
@@ -50,26 +51,37 @@ const StandUpNotes = ({ className, ...rest }) => {
         <Divider />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item lg={12} sm={12} xl={12} xs={12}>
-              <ReactMde
-                value={value}
-                onChange={setValue}
-                selectedTab={selectedTab}
-                onTabChange={setSelectedTab}
-                minEditorHeight={rest.height ?? 650}
-                minPreviewHeight={rest.height ?? 650}
-                generateMarkdownPreview={markdown =>
-                  Promise.resolve(
-                    <ReactMarkdown
-                      source={markdown}
-                      className={clsx(classes.root, 'markdown-body', className)}
-                    />
-                  )
-                }
-              />
+            <Grid item lg={6} sm={6} xl={6} xs={12}>
+              <Card>
+                <CardContent>
+                  <ReactMde
+                    value={value}
+                    onChange={setValue}
+                    selectedTab={selectedTab}
+                    onTabChange={setSelectedTab}
+                    minEditorHeight={rest.height ?? 480}
+                    maxEditorHeight={rest.height ?? 580}
+                    disablePreview
+                    generateMarkdownPreview={markdown =>
+                      Promise.resolve(
+                        <ReactMarkdown
+                          source={markdown}
+                          className={clsx(
+                            classes.root,
+                            'markdown-body',
+                            className
+                          )}
+                        />
+                      )
+                    }
+                  />
+                </CardContent>
+              </Card>
             </Grid>
             <Grid item lg={6} sm={6} xl={6} xs={12}>
               <Card>
+                <CardHeader title="Live Preview" />
+                <Divider />
                 <CardContent>
                   <ReactMarkdown
                     source={value}

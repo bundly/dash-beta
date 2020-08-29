@@ -1,4 +1,4 @@
-import { trelloData } from './placeHolderGen';
+import { trelloData } from './placeHolder';
 
 export const loadTrelloState = () => {
   try {
