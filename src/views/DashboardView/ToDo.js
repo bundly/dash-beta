@@ -2,8 +2,7 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import ReactMde from 'react-mde';
 import React, { useState, useEffect } from 'react';
-import { Converter as ShowdownConverter } from 'showdown';
-
+import ReactMarkdown from 'react-markdown';
 import {
   Box,
   Card,
@@ -12,23 +11,14 @@ import {
   Divider,
   makeStyles
 } from '@material-ui/core';
-import initData from './data';
 
-const converter = new ShowdownConverter({
-  tables: true,
-  simplifiedAutoLink: true,
-  strikethrough: true,
-  tasklists: true,
-  emoji: true,
-  smoothLivePreview: true,
-  ghMentions: true
+import markdownOverrides from '../../utils/markdownOverrides';
+import { todoData as initData } from '../../utils/placeHolder';
+
+const useStyles = makeStyles(markdownOverrides, {
+  name: 'MarkdownElement',
+  flip: false
 });
-
-const useStyles = makeStyles(() => ({
-  root: {
-    height: '100%'
-  }
-}));
 
 const ToDo = ({ className, ...rest }) => {
   const classes = useStyles();
@@ -48,25 +38,34 @@ const ToDo = ({ className, ...rest }) => {
   }, []);
 
   return (
-    <Card className={clsx(classes.root, className)} {...rest}>
-      <CardHeader title="To-Do" />
-      <Divider />
-      <CardContent>
-        <Box position="relative">
-          <ReactMde
-            value={value}
-            onChange={setValue}
-            selectedTab={selectedTab}
-            onTabChange={setSelectedTab}
-            minEditorHeight={650}
-            minPreviewHeight={650}
-            generateMarkdownPreview={markdown =>
-              Promise.resolve(converter.makeHtml(markdown))
-            }
-          />
-        </Box>
-      </CardContent>
-    </Card>
+    <Box>
+      <Card>
+        <CardHeader title="To-Do" />
+        <Divider />
+        <CardContent>
+          <Card>
+            <CardContent>
+              <ReactMde
+                value={value}
+                onChange={setValue}
+                selectedTab={selectedTab}
+                onTabChange={setSelectedTab}
+                minEditorHeight={rest.height ?? 650}
+                minPreviewHeight={rest.height ?? 650}
+                generateMarkdownPreview={markdown =>
+                  Promise.resolve(
+                    <ReactMarkdown
+                      source={markdown}
+                      className={clsx(classes.root, 'markdown-body', className)}
+                    />
+                  )
+                }
+              />
+            </CardContent>
+          </Card>
+        </CardContent>
+      </Card>
+    </Box>
   );
 };
 

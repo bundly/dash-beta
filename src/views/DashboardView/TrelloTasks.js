@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
-import { v4 as uuid } from 'uuid';
 import PropTypes from 'prop-types';
 import Board from 'react-trello';
 import {
@@ -12,36 +11,7 @@ import {
   colors
 } from '@material-ui/core';
 
-const data = {
-  lanes: [
-    {
-      id: uuid(),
-      title: 'Planned Tasks',
-      label: '2/2',
-      cards: [
-        {
-          id: uuid(),
-          title: 'Write Blog',
-          description: 'Can AI make memes',
-          label: '30 mins'
-        },
-        {
-          id: uuid(),
-          title: 'Pay Rent',
-          description: 'Transfer via NEFT',
-          label: '5 mins',
-          metadata: { sha: 'be312a1' }
-        }
-      ]
-    },
-    {
-      id: uuid(),
-      title: 'Completed',
-      label: '0/0',
-      cards: []
-    }
-  ]
-};
+import { loadTrelloState, saveTrelloState } from '../../utils/localStorage';
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -52,7 +22,7 @@ const useStyles = makeStyles(() => ({
 
 const MyTasks = ({ className, ...rest }) => {
   const classes = useStyles();
-  const [tasks] = useState(data);
+  const [tasks, updateTasks] = useState(loadTrelloState);
 
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
@@ -65,12 +35,17 @@ const MyTasks = ({ className, ...rest }) => {
           canAddLanes
           cardDraggable
           editLaneTitle
+          onDataChange={updatedData => {
+            updateTasks(updatedData);
+            saveTrelloState(updatedData);
+          }}
           style={{
             backgroundColor: '#ebecf0',
-            height: '440px'
+            height: '500px'
           }}
           laneStyle={{
-            backgroundColor: colors.common.white
+            backgroundColor: colors.common.white,
+            maxHeight: '480px'
           }}
           cardStyle={{
             backgroundColor: colors.blueGrey[50],
