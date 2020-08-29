@@ -12,8 +12,8 @@ import {
 import ReactMde from 'react-mde';
 import ReactMarkdown from 'react-markdown';
 
-import markdownOverrides from './markdownOverrides';
 import initData from './data';
+import markdownOverrides from '../../../utils/markdownOverrides';
 import yesterdayNotes from '../../../scripts/notesGenerator';
 import { githubQuery } from '../../../scripts/githubAPI';
 
@@ -41,7 +41,7 @@ const StandUpNotes = ({ className, ...rest }) => {
         setValue(yesterdayNotes(data.data, currentTime.toISOString()));
       }
     });
-  // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   return (
