@@ -1,4 +1,5 @@
 import { createMuiTheme, colors } from '@material-ui/core';
+import { sunsetOrange } from './customColors';
 import shadows from './shadows';
 import typography from './typography';
 
@@ -10,10 +11,10 @@ const theme = createMuiTheme({
       paper: colors.common.white
     },
     primary: {
-      main: colors.deepOrange[400]
+      main: sunsetOrange[400]
     },
     secondary: {
-      main: colors.deepOrange[400]
+      main: sunsetOrange[600]
     },
     text: {
       primary: colors.blueGrey[900],
