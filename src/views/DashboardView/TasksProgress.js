@@ -25,6 +25,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
+// TODO: Add daily progress here
 const TasksProgress = ({ className, ...rest }) => {
   const classes = useStyles();
 

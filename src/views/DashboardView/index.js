@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Grid, makeStyles } from '@material-ui/core';
 import Page from 'src/components/Page';
-import MyTasks from './MyTasks';
+import TrelloTasks from './TrelloTasks';
 import { StandUpNotesGen } from '../github/StandUpNotesView';
 import ToDo from './ToDo';
 
@@ -22,7 +22,7 @@ const Dashboard = () => {
       <Container maxWidth={false}>
         <Grid container spacing={3}>
           <Grid item lg={12} md={12} xl={12} xs={12}>
-            <MyTasks />
+            <TrelloTasks />
           </Grid>
           <Grid item lg={8} md={12} xl={9} xs={12}>
             <StandUpNotesGen />
