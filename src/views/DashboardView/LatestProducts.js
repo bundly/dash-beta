@@ -52,7 +52,7 @@ const data = [
   }
 ];
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(({
   root: {
     height: '100%'
   },
@@ -60,14 +60,17 @@ const useStyles = makeStyles({
     height: 48,
     width: 48
   }
-});
+}));
 
 const LatestProducts = ({ className, ...rest }) => {
   const classes = useStyles();
   const [products] = useState(data);
 
   return (
-    <Card className={clsx(classes.root, className)} {...rest}>
+    <Card
+      className={clsx(classes.root, className)}
+      {...rest}
+    >
       <CardHeader
         subtitle={`${products.length} in total`}
         title="Latest Products"
@@ -75,7 +78,10 @@ const LatestProducts = ({ className, ...rest }) => {
       <Divider />
       <List>
         {products.map((product, i) => (
-          <ListItem divider={i < products.length - 1} key={product.id}>
+          <ListItem
+            divider={i < products.length - 1}
+            key={product.id}
+          >
             <ListItemAvatar>
               <img
                 alt="Product"
@@ -87,14 +93,21 @@ const LatestProducts = ({ className, ...rest }) => {
               primary={product.name}
               secondary={`Updated ${product.updatedAt.fromNow()}`}
             />
-            <IconButton edge="end" size="small">
+            <IconButton
+              edge="end"
+              size="small"
+            >
               <MoreVertIcon />
             </IconButton>
           </ListItem>
         ))}
       </List>
       <Divider />
-      <Box display="flex" justifyContent="flex-end" p={2}>
+      <Box
+        display="flex"
+        justifyContent="flex-end"
+        p={2}
+      >
         <Button
           color="primary"
           endIcon={<ArrowRightIcon />}

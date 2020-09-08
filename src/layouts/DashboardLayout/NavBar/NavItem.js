@@ -54,7 +54,10 @@ const NavItem = ({
           disableGutters
           {...rest}
         >
-          <Button activeClassName={classes.active} className={classes.button}>
+          <Button
+            activeClassName={classes.active}
+            className={classes.button}
+          >
             {Icon && <Icon className={classes.icon} size="20" />}
             <span className={classes.title}>{title}</span>
           </Button>

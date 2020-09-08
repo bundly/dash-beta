@@ -40,8 +40,7 @@ const NotFoundView = () => {
             404: The page you are looking for isn’t here
           </Typography>
           <Typography align="center" color="textPrimary" variant="subtitle2">
-            You either tried some shady route or you aren&apos;t supposed to be
-            here yet!
+            You either tried some shady route or you aren&apos;t supposed to be here yet!
             <br />
             Aww don&apos;t worry, let&apos;s take you back home
             <br />
@@ -49,7 +48,9 @@ const NotFoundView = () => {
             <br />
             <NavLink to="/app/dashboard">
               <Button color="primary" fullWidth variant="outlined">
-                <h2>TAKE ME BACK!</h2>
+                <h2>
+                  TAKE ME BACK!
+                </h2>
               </Button>
             </NavLink>
           </Typography>

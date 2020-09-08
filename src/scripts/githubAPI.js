@@ -8,7 +8,7 @@ export function getToken() {
   }
   return {
     token: githubToken,
-    header: { Authorization: `Token ${githubToken}` }
+    header: { Authorization: `Token ${githubToken}` },
   };
 }
 
@@ -122,19 +122,17 @@ export function githubQuery({ time }) {
     method: 'post',
     data: JSON.stringify({
       query: summaryQuery,
-      variables: { from: targetTime.toISOString(), username: getUsername() }
+      variables: { from: targetTime.toISOString(), username: getUsername() },
     }),
-    headers: getToken().header
+    headers: getToken().header,
   });
 }
-export const githubNotificationFetcher = () =>
-  axios.get('https://api.github.com/notifications', {
-    headers: getToken().header
-  });
-export const githubSearch = text =>
-  axios.get(
-    `https://api.github.com/search/issues?q=${encodeURI(
-      text
-    )}%20org%3Amlh-Fellowship`,
-    { headers: getToken().header }
-  );
+export const githubNotificationFetcher = () => axios.get('https://api.github.com/notifications', {
+  headers: getToken().header,
+});
+export const githubSearch = (text) => axios.get(
+  `https://api.github.com/search/issues?q=${encodeURI(
+    text
+  )}%20org%3Amlh-Fellowship`,
+  { headers: getToken().header }
+);
