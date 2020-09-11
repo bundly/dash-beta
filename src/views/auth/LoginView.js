@@ -215,6 +215,8 @@ const Login = ({ className, ...rest }) => {
             <a
               href="https://github.com/bundly/dash"
               className="contribute-button"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Contribute to development
             </a>
