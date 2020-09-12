@@ -7,7 +7,6 @@ import AboutImage from '../../assets/Images/abstract-595.png';
 import ContributeImage from '../../assets/Images/bundlybox.png';
 import host from '../config';
 import '../../scss/login.scss';
-import { sunsetOrange } from '../../theme/customColors';
 
 const loginUrl = `${host}/auth/github/login`;
 
