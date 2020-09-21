@@ -1,60 +1,24 @@
-export const peach = {
-  /**
-   * Preview: ![orange 50](https://material-ui.com/static/colors-preview/orange-50-24x24.svg)
-   */
-  50: '#fff3e0',
-  /**
-   * Preview: ![orange 100](https://material-ui.com/static/colors-preview/orange-100-24x24.svg)
-   */
-  100: '#ffe0b2',
-  /**
-   * Preview: ![orange 200](https://material-ui.com/static/colors-preview/orange-200-24x24.svg)
-   */
-  200: '#ffcc80',
-  /**
-   * Preview: ![orange 300](https://material-ui.com/static/colors-preview/orange-300-24x24.svg)
-   */
-  300: '#ffb74d',
-  /**
-   * Preview: ![orange 400](https://material-ui.com/static/colors-preview/orange-400-24x24.svg)
-   */
-  400: '#ffa726',
-  /**
-   * Preview: ![orange 500](https://material-ui.com/static/colors-preview/orange-500-24x24.svg)
-   */
-  500: '#ff9800',
-  /**
-   * Preview: ![orange 600](https://material-ui.com/static/colors-preview/orange-600-24x24.svg)
-   */
-  600: '#fb8c00',
-  /**
-   * Preview: ![orange 700](https://material-ui.com/static/colors-preview/orange-700-24x24.svg)
-   */
-  700: '#f57c00',
-  /**
-   * Preview: ![orange 800](https://material-ui.com/static/colors-preview/orange-800-24x24.svg)
-   */
-  800: '#ef6c00',
-  /**
-   * Preview: ![orange 900](https://material-ui.com/static/colors-preview/orange-900-24x24.svg)
-   */
-  900: '#e65100',
-  /**
-   * Preview: ![orange A100](https://material-ui.com/static/colors-preview/orange-A100-24x24.svg)
-   */
-  A100: '#ffd180',
-  /**
-   * Preview: ![orange A200](https://material-ui.com/static/colors-preview/orange-A200-24x24.svg)
-   */
-  A200: '#ffab40',
-  /**
-   * Preview: ![orange A400](https://material-ui.com/static/colors-preview/orange-A400-24x24.svg)
-   */
-  A400: '#ff9100',
-  /**
-   * Preview: ![orange A700](https://material-ui.com/static/colors-preview/orange-A700-24x24.svg)
-   */
-  A700: '#ff6d00'
+export const sunsetOrange = {
+
+  50: '#ffece8',
+
+  100: '#ffc7b9',
+
+  200: '#ffa28b',
+
+  300: '#ff7d5d',
+
+  400: '#ff572e',
+
+  500: '#ff4315',
+
+  600: '#ea2e00',
+
+  700: '#bf2600',
+
+  800: '#951d00',
+
+  900: '#6a1500',
 };
 
-export default peach;
+export default sunsetOrange;
