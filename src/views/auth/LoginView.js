@@ -44,7 +44,6 @@ const Login = ({ className, ...rest }) => {
             <div className="content__wrapper">
               <header className="header">
                 <Typography
-
                   variant="h1"
                   style={{
                     display: 'flex',
@@ -91,7 +90,10 @@ const Login = ({ className, ...rest }) => {
         <div className="features-container">
           <div className="features slide">
             <div className="text-container">
-              <div className="intro-text" style={{ color: colors.blueGrey[500] }}>
+              <div
+                className="intro-text"
+                style={{ color: colors.blueGrey[500] }}
+              >
                 <h1>Generate Standup Notes in markdown automatically</h1>
                 <p>
                   Bundly Looks through the Pull Requests Reviewed, Issues
@@ -114,7 +116,10 @@ const Login = ({ className, ...rest }) => {
 
           <div className="features slide">
             <div className="text-container">
-              <div className="intro-text" style={{ color: colors.blueGrey[500] }}>
+              <div
+                className="intro-text"
+                style={{ color: colors.blueGrey[500] }}
+              >
                 <h1>Access internal discussions instantly</h1>
                 <p>
                   Quickly search through MLH Fellowship Org discussions with the
@@ -132,7 +137,10 @@ const Login = ({ className, ...rest }) => {
 
           <div className="features slide">
             <div className="text-container">
-              <div className="intro-text" style={{ color: colors.blueGrey[500] }}>
+              <div
+                className="intro-text"
+                style={{ color: colors.blueGrey[500] }}
+              >
                 <h1>Never miss out on the important stuff</h1>
                 <p>
                   Receive personalized notifications for your repositories
@@ -165,7 +173,10 @@ const Login = ({ className, ...rest }) => {
 
           <div className="features slide">
             <div className="text-container">
-              <div className="intro-text" style={{ color: colors.blueGrey[500] }}>
+              <div
+                className="intro-text"
+                style={{ color: colors.blueGrey[500] }}
+              >
                 <h1>Track tasks easily</h1>
                 <p>Add notifications from github to your ToDo list directly</p>
               </div>
@@ -202,7 +213,10 @@ const Login = ({ className, ...rest }) => {
         </div>
 
         <div className="contribute slide">
-          <div className="img-container" style={{ color: colors.blueGrey[500] }}>
+          <div
+            className="img-container"
+            style={{ color: colors.blueGrey[500] }}
+          >
             <img src={ContributeImage} alt="ContributeImg" />
             <h2>Let&#39;s set up your developer dashboard</h2>
           </div>
@@ -221,7 +235,9 @@ const Login = ({ className, ...rest }) => {
           </div>
         </div>
 
-        <div className="copyright" style={{ color: colors.blueGrey[500] }}>Copyright &copy; 2020 Bundly</div>
+        <div className="copyright" style={{ color: colors.blueGrey[500] }}>
+          Copyright &copy; 2020 Bundly
+        </div>
       </div>
     </div>
   );

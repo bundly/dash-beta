@@ -1,5 +1,4 @@
 export const sunsetOrange = {
-
   50: '#ffece8',
 
   100: '#ffc7b9',
@@ -18,7 +17,7 @@ export const sunsetOrange = {
 
   800: '#951d00',
 
-  900: '#6a1500',
+  900: '#6a1500'
 };
 
 export default sunsetOrange;
