@@ -46,7 +46,7 @@ $white: #fff;
 
   &:before,
   &:after {
-    content: "";
+    content: '';
     width: 1.5rem;
     height: 0.2rem;
     background-color: $elephant;
@@ -205,7 +205,7 @@ $white: #fff;
       }
 
       &:after {
-        content: "";
+        content: '';
         width: 70%;
         height: 0.1rem;
         position: relative;
@@ -433,7 +433,7 @@ $white: #fff;
 }
 
 .contribute-button:after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   height: 100%;
@@ -563,7 +563,7 @@ $white: #fff;
   .features:nth-child(even)::after,
   .slide:nth-child(odd)::after,
   .slide:nth-child(even)::after {
-    color:rgb(96, 125, 139);
+    color: rgb(96, 125, 139);
     font-size: 1em;
     position: absolute;
     top: 50%;
@@ -590,25 +590,25 @@ $white: #fff;
   }
 
   .slide.about::after {
-    content: "N 60\00B0\0009 5\0027\0009 0.157\0022\0009 / W 238\00B0\0009 30\0027\0009 33.258\0022";
+    content: 'N 60\00B0\0009 5\0027\0009 0.157\0022\0009 / W 238\00B0\0009 30\0027\0009 33.258\0022';
     top: 45%;
   }
 
   .slide.contribute::after {
-    content: "";
+    content: '';
   }
 
   .features:nth-child(1)::after {
-    content: "N 30\00B0\0009 7\0027\0009 0.357\0022\0009 / E 108\00B0\0009 45\0027\0009 23.228\0022";
+    content: 'N 30\00B0\0009 7\0027\0009 0.357\0022\0009 / E 108\00B0\0009 45\0027\0009 23.228\0022';
   }
   .features:nth-child(2)::after {
-    content: "S 45\00B0\0009 2\0027\0009 0.327\0022\0009 / W 138\00B0\0009 20\0027\0009 25.215\0022";
+    content: 'S 45\00B0\0009 2\0027\0009 0.327\0022\0009 / W 138\00B0\0009 20\0027\0009 25.215\0022';
     top: 45%;
   }
   .features:nth-child(3)::after {
-    content: "N 60\00B0\0009 5\0027\0009 0.157\0022\0009 / W 238\00B0\0009 30\0027\0009 33.258\0022";
+    content: 'N 60\00B0\0009 5\0027\0009 0.157\0022\0009 / W 238\00B0\0009 30\0027\0009 33.258\0022';
   }
   .features:nth-child(4)::after {
-    content: "S 10\00B0\0009 9\0027\0009 0.857\0022\0009 / E 128\00B0\0009 15\0027\0009 41.138\0022";
+    content: 'S 10\00B0\0009 9\0027\0009 0.857\0022\0009 / E 128\00B0\0009 15\0027\0009 41.138\0022';
   }
 }

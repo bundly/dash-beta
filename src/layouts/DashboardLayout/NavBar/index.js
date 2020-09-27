@@ -17,7 +17,7 @@ import {
   Settings as SettingsIcon,
   FileText as FileTextIcon,
   User as UserIcon,
-  List as ListIcon,
+  List as ListIcon
 } from 'react-feather';
 import NavItem from './NavItem';
 

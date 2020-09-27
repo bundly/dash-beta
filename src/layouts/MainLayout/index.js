@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core';
 import TopBar from './TopBar';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.default,
     display: 'flex',

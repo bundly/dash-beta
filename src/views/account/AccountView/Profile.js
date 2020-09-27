@@ -35,31 +35,14 @@ const Profile = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
-    <Card
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <Card className={clsx(classes.root, className)} {...rest}>
       <CardContent>
-        <Box
-          alignItems="center"
-          display="flex"
-          flexDirection="column"
-        >
-          <Avatar
-            className={classes.avatar}
-            src={user.avatar}
-          />
-          <Typography
-            color="textPrimary"
-            gutterBottom
-            variant="h3"
-          >
+        <Box alignItems="center" display="flex" flexDirection="column">
+          <Avatar className={classes.avatar} src={user.avatar} />
+          <Typography color="textPrimary" gutterBottom variant="h3">
             {user.name}
           </Typography>
-          <Typography
-            color="textSecondary"
-            variant="body1"
-          >
+          <Typography color="textSecondary" variant="body1">
             {`${user.city} ${user.country}`}
           </Typography>
           <Typography
@@ -73,11 +56,7 @@ const Profile = ({ className, ...rest }) => {
       </CardContent>
       <Divider />
       <CardActions>
-        <Button
-          color="primary"
-          fullWidth
-          variant="text"
-        >
+        <Button color="primary" fullWidth variant="text">
           Upload picture
         </Button>
       </CardActions>

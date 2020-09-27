@@ -30,28 +30,14 @@ const TasksProgress = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
-    <Card
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <Card className={clsx(classes.root, className)} {...rest}>
       <CardContent>
-        <Grid
-          container
-          justify="space-between"
-          spacing={3}
-        >
+        <Grid container justify="space-between" spacing={3}>
           <Grid item>
-            <Typography
-              color="textSecondary"
-              gutterBottom
-              variant="h6"
-            >
+            <Typography color="textSecondary" gutterBottom variant="h6">
               TASKS PROGRESS
             </Typography>
-            <Typography
-              color="textPrimary"
-              variant="h3"
-            >
+            <Typography color="textPrimary" variant="h3">
               75.5%
             </Typography>
           </Grid>
@@ -62,10 +48,7 @@ const TasksProgress = ({ className, ...rest }) => {
           </Grid>
         </Grid>
         <Box mt={3}>
-          <LinearProgress
-            value={75.5}
-            variant="determinate"
-          />
+          <LinearProgress value={75.5} variant="determinate" />
         </Box>
       </CardContent>
     </Card>
