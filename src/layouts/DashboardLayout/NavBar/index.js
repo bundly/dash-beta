@@ -54,6 +54,11 @@ const items = [
     title: 'Daily Standup'
   },
   {
+    href: '/app/stargazers',
+    icon: FileTextIcon,
+    title: 'Star Gazer Network'
+  },
+  {
     href: '/app/noter',
     icon: ListIcon,
     title: 'Notes'
