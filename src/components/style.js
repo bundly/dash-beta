@@ -9,7 +9,9 @@ const nodeStyles = [
       'transition-property': 'background-color border-color',
       'transition-duration': '0.3s',
       'transition-timing-function': 'ease-in-sine',
-      'background-color': COLORS.purp
+      'background-image': 'data(avatarUrl)' || COLORS.purp,
+      'background-size': 'inherit',
+      label: 'data(name)'
     }
   }
 ];
@@ -18,8 +20,6 @@ const edgeStyles = [
     selector: 'edge',
     style: {
       'curve-style': 'bezier',
-      'target-arrow-shape': 'triangle',
-      'target-arrow-color': COLORS.purp,
       'line-color': COLORS.purp
     }
   }
