@@ -12,7 +12,7 @@ import {
 import SendIcon from '@material-ui/icons/Send';
 
 import Graph from '../../../components/Graph';
-import defaultData from './default';
+import { options, initialNode } from './default';
 import { getStarGazers } from '../../../scripts/githubAPI';
 
 const useStyles = makeStyles(theme => ({
@@ -28,22 +28,16 @@ const useStyles = makeStyles(theme => ({
 const StarGazers = () => {
   const classes = useStyles();
 
-  const [project, setProject] = useState(defaultData);
-  const [values, setValues] = useState([
-    {
-      data: {
-        id: 'base-id',
-        generation: 0,
-        style: { 'background-color': '#FFFFF' }
-      }
-    }
-  ]);
+  const [project, setProject] = useState(options);
+  const [tempOpt, setTempOpt] = useState(options);
+  const [values, setValues] = useState([initialNode]);
+  const [reRender, triggerRender] = useState(0);
 
   useEffect(() => {
     getStarGazers({
       name: project.name,
       owner: project.owner,
-      limit: 100
+      limit: project.limit
     }).then(res => {
       if (res) {
         const gazers = res.data.data.repository.stargazers.edges;
@@ -76,31 +70,61 @@ const StarGazers = () => {
         <CardHeader title="Star Gazers" />
         <Divider />
         <CardContent>
-          <TextField
-            required
-            className={classes.input}
-            id="standard-basic"
-            label="Owner"
-            type="search"
-            defaultValue="sauravhiremath"
-          />
-          <TextField
-            required
-            className={classes.input}
-            id="standard-basic"
-            label="Project"
-            type="search"
-            defaultValue="fifa-api"
-          />
-          <Button
-            variant="contained"
-            color="secondary"
-            className={classes.button}
-            endIcon={<SendIcon />}
+          <form
+            autoComplete="off"
+            onSubmit={e => {
+              e.preventDefault();
+              console.log(tempOpt);
+              triggerRender(c => c + 1);
+              setValues([initialNode]);
+              setProject({ ...tempOpt });
+            }}
           >
-            Send
-          </Button>
-          <Graph elements={values} />
+            <TextField
+              required
+              className={classes.input}
+              id="owner"
+              label="Owner"
+              defaultValue="sauravhiremath"
+              onInput={e => {
+                e.persist();
+                setTempOpt(prev => ({ ...prev, owner: e.target.value }));
+              }}
+            />
+            <TextField
+              required
+              className={classes.input}
+              id="name"
+              label="Project Name"
+              defaultValue="fifa-api"
+              onInput={e => {
+                e.persist();
+                setTempOpt(prev => ({ ...prev, name: e.target.value }));
+              }}
+            />
+            <TextField
+              required
+              className={classes.input}
+              id="limit"
+              label="Limit (last x)"
+              type="text"
+              defaultValue="100"
+              onInput={e => {
+                e.persist();
+                setTempOpt(prev => ({ ...prev, limit: e.target.value }));
+              }}
+            />
+            <Button
+              variant="contained"
+              color="secondary"
+              type="submit"
+              className={classes.button}
+              endIcon={<SendIcon />}
+            >
+              Compute
+            </Button>
+          </form>
+          <Graph elements={values} key={reRender} />
         </CardContent>
       </Card>
     </Box>
