@@ -1,6 +1,6 @@
 # Features
 
-- Daily progress, stand-up reports auto generation
-- Stargazers network
-- Forks network
+- [x] Daily progress, stand-up reports auto generation
+- [x] Stargazers network
+- [ ] Forks network
 - 
