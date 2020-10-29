@@ -28,8 +28,7 @@ const useStyles = makeStyles(() =>
         width: '100%'
       }
     }
-  })
-);
+  }));
 
 const GlobalStyles = () => {
   useStyles();
