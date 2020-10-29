@@ -101,6 +101,7 @@ export const forksQuery = `
 query starGazersQuery($name: String!, $owner: String!, $limit: Int!) {
   repository(name: "jest", owner: "facebook") {
     forks(last: 100) {
+      totalCount
       edges {
         node {
           owner {
