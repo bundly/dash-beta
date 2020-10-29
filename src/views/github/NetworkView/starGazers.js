@@ -40,14 +40,14 @@ const StarGazers = () => {
       limit: project.limit
     }).then(res => {
       if (res) {
+        console.log(res);
         const gazers = res.data.data.repository.stargazers.edges;
-        console.log(gazers);
         gazers.forEach(ele => {
           const node = {
             data: {
               id: ele.node.avatarUrl,
               avatarUrl: ele.node.avatarUrl,
-              name: ele.node.name,
+              login: ele.node.login,
               generation: 0
             }
           };
@@ -111,7 +111,10 @@ const StarGazers = () => {
               defaultValue="100"
               onInput={e => {
                 e.persist();
-                setTempOpt(prev => ({ ...prev, limit: e.target.value }));
+                setTempOpt(prev => ({
+                  ...prev,
+                  limit: Number(e.target.value)
+                }));
               }}
             />
             <Button

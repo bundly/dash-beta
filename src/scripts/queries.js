@@ -90,7 +90,7 @@ query starGazersQuery($name: String!, $owner: String!, $limit: Int!) {
       edges {
         node {
           avatarUrl
-          name
+          login
         }
       }
     }

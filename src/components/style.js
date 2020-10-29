@@ -9,9 +9,9 @@ const nodeStyles = [
       'transition-property': 'background-color border-color',
       'transition-duration': '0.3s',
       'transition-timing-function': 'ease-in-sine',
-      'background-image': 'data(avatarUrl)' || COLORS.purp,
+      'background-image': 'data(avatarUrl)',
       'background-size': 'inherit',
-      label: 'data(name)'
+      label: 'data(login)'
     }
   }
 ];
