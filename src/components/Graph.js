@@ -7,7 +7,7 @@ import style from './style';
 
 const useStyles = makeStyles(() => ({
   graph: {
-    height: '600px',
+    height: '600px'
   }
 }));
 
@@ -43,7 +43,7 @@ const Graph = ({ elements }) => {
           style,
           maxZoom: 1,
           wheelSensitivity: 0.2,
-          container: container.current,
+          container: container.current
         });
       }
       // eslint-disable-next-line consistent-return
