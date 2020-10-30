@@ -15,7 +15,7 @@ import ReactMarkdown from 'react-markdown';
 import initData from './data';
 import markdownOverrides from '../../../utils/markdownOverrides';
 import yesterdayNotes from '../../../scripts/notesGenerator';
-import { getSummary } from '../../../scripts/githubAPI';
+import { getSummary, getUsername } from '../../../scripts/githubAPI';
 
 // TODO: Custom Buttons
 // const buttonPropsOptions = {
@@ -37,7 +37,11 @@ const StandUpNotes = ({ className, ...rest }) => {
   const currentTime = new Date();
 
   useEffect(() => {
-    getSummary({ time: currentTime.toISOString() }).then(data => {
+    getSummary({
+      time: currentTime.toISOString(),
+      limit: 100,
+      username: getUsername()
+    }).then(data => {
       if (!data.errors) {
         setValue(yesterdayNotes(data.data, currentTime.toISOString()));
       }
