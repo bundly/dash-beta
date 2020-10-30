@@ -14,5 +14,6 @@ export const initialNode = {
 export const intialCentrality = {
   dcn: 0,
   ccn: 0,
-  bc: 0
+  bc: 0,
+  pageRank: '∞'
 };

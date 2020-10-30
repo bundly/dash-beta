@@ -85,11 +85,19 @@ const StarGazers = () => {
         });
       }
     });
+    // eslint-disable-next-line
   }, [project]);
 
   const onGraphUpdate = nodeData => {
-    const { dcn, ccn, bc } = nodeData;
-    setCentrality({ dcn, ccn, bc });
+    const {
+      dcn, ccn, bc, pageRank
+    } = nodeData;
+    setCentrality({
+      dcn,
+      ccn,
+      bc,
+      pageRank
+    });
   };
 
   return (
@@ -206,6 +214,16 @@ const StarGazers = () => {
                     InputProps={{
                       readOnly: true,
                       value: centralities.bc
+                    }}
+                    variant="filled"
+                  />
+                  <TextField
+                    className={classes.centrality}
+                    id="pagerank"
+                    label="PageRank"
+                    InputProps={{
+                      readOnly: true,
+                      value: centralities.pageRank
                     }}
                     variant="filled"
                   />

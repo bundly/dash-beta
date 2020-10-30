@@ -32,15 +32,16 @@ const Graph = ({ elements, updateGraph }) => {
       const dcn = graph.current.elements().dcn();
       const ccn = graph.current.elements().ccn();
       const bc = graph.current.elements().bc();
+      const pageRank = graph.current.elements().pageRank();
 
       graph.current.nodes().forEach(n => {
         n.data({
           dcn: dcn.degree(n),
           ccn: ccn.closeness(n),
-          bc: bc.betweenness(n)
+          bc: bc.betweenness(n),
+          pageRank: pageRank.rank(n)
         });
       });
-      console.log(graph.current.nodes());
 
       layout.current.run();
     }
@@ -75,6 +76,7 @@ const Graph = ({ elements, updateGraph }) => {
     } catch (error) {
       console.error(error);
     }
+    // eslint-disable-next-line
   }, []);
 
   return <div className={classes.graph} ref={container} />;

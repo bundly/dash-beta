@@ -62,6 +62,7 @@ const Forks = () => {
         });
       }
     });
+    // eslint-disable-next-line
   }, [project]);
 
   return (

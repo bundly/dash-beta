@@ -19,7 +19,8 @@ import {
   User as UserIcon,
   List as ListIcon,
   Star as StarIcon,
-  GitBranch as GitBranchIcon
+  GitBranch as GitBranchIcon,
+  Users as UsersIcon
 } from 'react-feather';
 import NavItem from './NavItem';
 
@@ -55,6 +56,11 @@ const items = [
     title: 'Daily Standup'
   },
   {
+    href: '/app/noter',
+    icon: ListIcon,
+    title: 'Notes'
+  },
+  {
     href: '/app/stargazers',
     icon: StarIcon,
     title: 'Star Gazers Network'
@@ -66,13 +72,8 @@ const items = [
   },
   {
     href: '/app/nestedFollowers',
-    icon: GitBranchIcon,
+    icon: UsersIcon,
     title: 'Follower\'s Followers'
-  },
-  {
-    href: '/app/noter',
-    icon: ListIcon,
-    title: 'Notes'
   },
   {
     href: '/app/account',

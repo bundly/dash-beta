@@ -62,6 +62,7 @@ const StarGazers = () => {
         });
       }
     });
+    // eslint-disable-next-line
   }, [project]);
 
   return (
