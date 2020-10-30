@@ -65,6 +65,11 @@ const items = [
     title: 'Forks Network'
   },
   {
+    href: '/app/nestedFollowers',
+    icon: GitBranchIcon,
+    title: 'Follower\'s Followers'
+  },
+  {
     href: '/app/noter',
     icon: ListIcon,
     title: 'Notes'

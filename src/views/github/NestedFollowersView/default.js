@@ -1,12 +1,18 @@
 export const options = {
   owner: 'sauravhiremath',
-  limit1: 10,
-  limit2: 50
+  limit1: 5,
+  limit2: 5
 };
 
 export const initialNode = {
   data: {
-    id: 'base-id',
+    id: 'sauravhiremath',
     generation: 0
   }
+};
+
+export const intialCentrality = {
+  dcn: 0,
+  ccn: 0,
+  bc: 0
 };
