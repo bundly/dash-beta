@@ -114,3 +114,23 @@ query starGazersQuery($name: String!, $owner: String!, $limit: Int!) {
     }
   }
 }`;
+
+export const nestedFollowersQuery = `
+query starGazersQuery($owner: String!, $limit1: Int!, $limit2: Int!) {
+  user(login: $name) {
+    followers(last: $limit1) {
+      nodes {
+        login
+        avatarUrl
+        followers(last: $limit2) {
+          nodes {
+            login
+            avatarUrl
+          }
+        }
+      }
+    }
+  }
+}
+
+`;

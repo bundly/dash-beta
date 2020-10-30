@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { summaryQuery, starGazersQuery, forksQuery } from './queries';
+import {
+  summaryQuery,
+  starGazersQuery,
+  forksQuery,
+  nestedFollowersQuery
+} from './queries';
 
 export function getToken() {
   const bundlyToken = localStorage.getItem('bundly-token');
@@ -65,6 +70,18 @@ export function getForks({ name, owner, limit }) {
     data: JSON.stringify({
       query: forksQuery,
       variables: { name, owner, limit }
+    }),
+    headers: getToken().header
+  });
+}
+
+export function getNestedFollowers({ owner, limit1, limit2 }) {
+  return axios({
+    url: 'https://api.github.com/graphql',
+    method: 'post',
+    data: JSON.stringify({
+      query: nestedFollowersQuery,
+      variables: { owner, limit1, limit2 }
     }),
     headers: getToken().header
   });
