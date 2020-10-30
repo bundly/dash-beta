@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
+  Avatar,
   Box,
   Divider,
   Card,
@@ -7,24 +8,31 @@ import {
   CardHeader,
   Button,
   TextField,
+  Typography,
   makeStyles,
   Grid
 } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 
 import Graph from '../../../components/Graph';
-import { options, initialNode, intialCentrality } from './default';
+import { options, initialNode, currentNodeFill } from './default';
 import { getNestedFollowers } from '../../../scripts/githubAPI';
 
 const useStyles = makeStyles(theme => ({
-  input: {
+  box: {
     margin: theme.spacing(1)
   },
   centrality: {
     margin: theme.spacing(1, 0, 1, 0)
   },
-  button: {
-    margin: theme.spacing(1)
+  name: {
+    margin: theme.spacing(1, 2, 1, 2)
+  },
+  avatar: {
+    width: theme.spacing(14),
+    height: theme.spacing(14),
+    alignItems: 'center',
+    display: 'flex'
   }
 }));
 
@@ -34,7 +42,7 @@ const StarGazers = () => {
   const [project, setProject] = useState(options);
   const [tempOpt, setTempOpt] = useState(options);
   const [values, setValues] = useState([initialNode]);
-  const [centralities, setCentrality] = useState(intialCentrality);
+  const [currentNode, setCurrentNode] = useState(currentNodeFill);
   const [reRender, triggerRender] = useState(0);
 
   useEffect(() => {
@@ -90,9 +98,11 @@ const StarGazers = () => {
 
   const onGraphUpdate = nodeData => {
     const {
-      dcn, ccn, bc, pageRank
+      dcn, ccn, bc, pageRank, login, avatarUrl
     } = nodeData;
-    setCentrality({
+    setCurrentNode({
+      login,
+      avatarUrl,
       dcn,
       ccn,
       bc,
@@ -122,7 +132,7 @@ const StarGazers = () => {
                   >
                     <TextField
                       required
-                      className={classes.input}
+                      className={classes.box}
                       id="owner"
                       label="Owner"
                       defaultValue="sauravhiremath"
@@ -136,7 +146,7 @@ const StarGazers = () => {
                     />
                     <TextField
                       required
-                      className={classes.input}
+                      className={classes.box}
                       id="limit1"
                       label="1st Gen Limit (last x)"
                       type="text"
@@ -151,7 +161,7 @@ const StarGazers = () => {
                     />
                     <TextField
                       required
-                      className={classes.input}
+                      className={classes.box}
                       id="limit2"
                       label="2nd Gen Limit (last x)"
                       type="text"
@@ -168,7 +178,7 @@ const StarGazers = () => {
                       variant="contained"
                       color="secondary"
                       type="submit"
-                      className={classes.button}
+                      className={classes.box}
                       endIcon={<SendIcon />}
                     >
                       Compute
@@ -187,13 +197,21 @@ const StarGazers = () => {
                 <CardHeader title="Live Centralities" />
                 <Divider />
                 <CardContent>
+                  <Avatar
+                    alt={currentNode.login}
+                    src={currentNode.avatarUrl}
+                    className={classes.avatar}
+                  />
+                  <Typography className={classes.name} variant="subtitle2">
+                    {currentNode.login}
+                  </Typography>
                   <TextField
                     className={classes.centrality}
                     id="degree-centrality"
                     label="Degree Centrality"
                     InputProps={{
                       readOnly: true,
-                      value: centralities.dcn
+                      value: currentNode.dcn
                     }}
                     variant="filled"
                   />
@@ -203,7 +221,7 @@ const StarGazers = () => {
                     label="Closeness Centrality"
                     InputProps={{
                       readOnly: true,
-                      value: centralities.ccn
+                      value: currentNode.ccn
                     }}
                     variant="filled"
                   />
@@ -213,7 +231,7 @@ const StarGazers = () => {
                     label="Betweenness Centrality"
                     InputProps={{
                       readOnly: true,
-                      value: centralities.bc
+                      value: currentNode.bc
                     }}
                     variant="filled"
                   />
@@ -223,7 +241,7 @@ const StarGazers = () => {
                     label="PageRank"
                     InputProps={{
                       readOnly: true,
-                      value: centralities.pageRank
+                      value: currentNode.pageRank
                     }}
                     variant="filled"
                   />

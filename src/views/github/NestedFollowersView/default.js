@@ -11,7 +11,9 @@ export const initialNode = {
   }
 };
 
-export const intialCentrality = {
+export const currentNodeFill = {
+  login: 'Anonymous',
+  avatarUrl: '',
   dcn: 0,
   ccn: 0,
   bc: 0,
