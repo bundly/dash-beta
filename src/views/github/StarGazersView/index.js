@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, makeStyles } from '@material-ui/core';
-import 'react-mde/lib/styles/css/react-mde-all.css';
+// import 'react-mde/lib/styles/css/react-mde-all.css';
 
 import Page from 'src/components/Page';
-import StarGazers from './starGazers';
+import StarGazersGen from './starGazers';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,16 +14,16 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const StandUpNotes = () => {
+const StarGazers = () => {
   const classes = useStyles();
 
   return (
     <Page className={classes.root} title="Star Gazers">
       <Container maxWidth={false}>
-        <StarGazers />
+        <StarGazersGen />
       </Container>
     </Page>
   );
 };
 
-export default StandUpNotes;
+export default StarGazers;

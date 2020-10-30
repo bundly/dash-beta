@@ -7,7 +7,6 @@ export const options = {
 export const initialNode = {
   data: {
     id: 'base-id',
-    generation: 0,
-    style: { 'background-color': '#FFFFF' }
+    generation: 0
   }
 };
