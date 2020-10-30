@@ -17,7 +17,9 @@ import {
   Settings as SettingsIcon,
   FileText as FileTextIcon,
   User as UserIcon,
-  List as ListIcon
+  List as ListIcon,
+  Star as StarIcon,
+  GitBranch as GitBranchIcon
 } from 'react-feather';
 import NavItem from './NavItem';
 
@@ -37,7 +39,6 @@ function getUsername() {
 
 const user = {
   avatar: getAvatar() || '/static/images/avatars/avatar_6.png',
-  // TODO: Add
   jobTitle: `Hi, ${getUsername()}`,
   name: `@${getUsername()}` || 'Anonymous User'
 };
@@ -55,8 +56,13 @@ const items = [
   },
   {
     href: '/app/stargazers',
-    icon: FileTextIcon,
-    title: 'Star Gazer Network'
+    icon: StarIcon,
+    title: 'Star Gazers Network'
+  },
+  {
+    href: '/app/forks',
+    icon: GitBranchIcon,
+    title: 'Forks Network'
   },
   {
     href: '/app/noter',

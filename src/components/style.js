@@ -9,6 +9,7 @@ const nodeStyles = [
       'transition-property': 'background-color border-color',
       'transition-duration': '0.3s',
       'transition-timing-function': 'ease-in-sine',
+      'background-color': COLORS.purp,
       'background-image': 'data(avatarUrl)',
       'background-size': 'inherit',
       label: 'data(login)'
