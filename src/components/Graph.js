@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core';
 import cytoscape from 'cytoscape';
 import cola from 'cytoscape-cola';
@@ -11,14 +11,14 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const Graph = ({ elements }) => {
+const Graph = ({ elements, updateGraph }) => {
   const classes = useStyles();
 
-  const container = React.useRef(null);
-  const graph = React.useRef();
-  const layout = React.useRef();
+  const container = useRef(null);
+  const graph = useRef();
+  const layout = useRef();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (graph.current) {
       if (layout.current) {
         layout.current.stop();
@@ -27,11 +27,26 @@ const Graph = ({ elements }) => {
       layout.current = graph.current.elements().makeLayout({
         name: 'cola'
       });
+
+      // Calculate centrality
+      const dcn = graph.current.elements().dcn();
+      const ccn = graph.current.elements().ccn();
+      const bc = graph.current.elements().bc();
+
+      graph.current.nodes().forEach(n => {
+        n.data({
+          dcn: dcn.degree(n),
+          ccn: ccn.closeness(n),
+          bc: bc.betweenness(n)
+        });
+      });
+      console.log(graph.current.nodes());
+
       layout.current.run();
     }
   }, [elements]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!container.current) {
       return;
     }
@@ -45,6 +60,12 @@ const Graph = ({ elements }) => {
           wheelSensitivity: 0.2,
           container: container.current
         });
+
+        if (updateGraph) {
+          graph.current.on('select', 'node', e => {
+            updateGraph(e.target.data());
+          });
+        }
       }
       // eslint-disable-next-line consistent-return
       return () => {
