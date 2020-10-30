@@ -1,5 +1,5 @@
 export const summaryQuery = `
-query summaryQuery($from: DateTime!, $username: [String!]) {
+query summaryQuery($from: DateTime!, $username: [String!], $limit: Int!) {
   viewer {
     organization(login: "MLH-Fellowship") {
       team(slug: "mlh-fellows-summer-2020") {
@@ -27,13 +27,13 @@ query summaryQuery($from: DateTime!, $username: [String!]) {
         }
       }
     }
-    issueComments(last: 100) {
+    issueComments(last: $limit) {
       nodes {
         updatedAt
       }
     }
     contributionsCollection(from: $from) {
-      commitContributionsByRepository(maxRepositories: 10) {
+      commitContributionsByRepository(maxRepositories: $limit) {
         resourcePath
         repository {
           nameWithOwner
@@ -43,7 +43,7 @@ query summaryQuery($from: DateTime!, $username: [String!]) {
           totalCount
         }
       }
-      issueContributions(last: 100) {
+      issueContributions(last: $limit) {
         nodes {
           issue {
             title
@@ -53,7 +53,7 @@ query summaryQuery($from: DateTime!, $username: [String!]) {
         }
         totalCount
       }
-      pullRequestContributions(last: 100) {
+      pullRequestContributions(last: $limit) {
         nodes {
           pullRequest {
             state
@@ -64,7 +64,7 @@ query summaryQuery($from: DateTime!, $username: [String!]) {
         }
         totalCount
       }
-      pullRequestReviewContributions(last: 100) {
+      pullRequestReviewContributions(last: $limit) {
         nodes {
           pullRequest {
             number
@@ -72,6 +72,7 @@ query summaryQuery($from: DateTime!, $username: [String!]) {
             title
           }
         }
+        totalCount
       }
       startedAt
       totalCommitContributions
@@ -99,8 +100,8 @@ query starGazersQuery($name: String!, $owner: String!, $limit: Int!) {
 
 export const forksQuery = `
 query starGazersQuery($name: String!, $owner: String!, $limit: Int!) {
-  repository(name: "jest", owner: "facebook") {
-    forks(last: 100) {
+  repository(name: $name, owner: $owner) {
+    forks(last: $limit) {
       totalCount
       edges {
         node {

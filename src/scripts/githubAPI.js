@@ -29,7 +29,7 @@ export function markNotification(id) {
   );
 }
 
-export function getSummary({ time }) {
+export function getSummary({ time, limit, username }) {
   // console.log(getToken(), getUsername())
 
   const targetTime = new Date(time);
@@ -40,7 +40,7 @@ export function getSummary({ time }) {
     method: 'post',
     data: JSON.stringify({
       query: summaryQuery,
-      variables: { from: targetTime.toISOString(), username: getUsername() }
+      variables: { from: targetTime.toISOString(), username: [username], limit }
     }),
     headers: getToken().header
   });
