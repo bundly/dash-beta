@@ -54,7 +54,7 @@ const NavItem = ({
           disableGutters
           {...rest}
         >
-          <Button activeClassName={classes.active} className={classes.button}>
+          <Button className={classes.button}>
             {Icon && <Icon className={classes.icon} size="20" />}
             <span className={classes.title}>{title}</span>
           </Button>
@@ -69,12 +69,7 @@ const NavItem = ({
       disableGutters
       {...rest}
     >
-      <Button
-        activeClassName={classes.active}
-        className={classes.button}
-        component={RouterLink}
-        to={href}
-      >
+      <Button className={classes.button} component={RouterLink} to={href}>
         {Icon && <Icon className={classes.icon} size="20" />}
         <span className={classes.title}>{title}</span>
       </Button>
