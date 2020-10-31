@@ -33,6 +33,15 @@ const Graph = ({ elements, updateGraph }) => {
       const ccn = graph.current.elements().ccn();
       const bc = graph.current.elements().bc();
       const pageRank = graph.current.elements().pageRank();
+      const clusters = graph.current.elements().mcl({ inflateFactor: 1.5 });
+
+      // Assign random colors to each cluster!
+      clusters.forEach(ele => {
+        ele.style({
+          borderColor: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
+          borderWidth: '8px'
+        });
+      });
 
       graph.current.nodes().forEach(n => {
         n.data({
