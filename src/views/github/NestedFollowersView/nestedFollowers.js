@@ -124,9 +124,15 @@ const StarGazers = () => {
                     autoComplete="off"
                     onSubmit={e => {
                       e.preventDefault();
-                      console.log(tempOpt);
                       triggerRender(c => c + 1);
-                      setValues([initialNode]);
+                      setValues([
+                        {
+                          data: {
+                            id: tempOpt.owner,
+                            generation: 0
+                          }
+                        }
+                      ]);
                       setProject({ ...tempOpt });
                     }}
                   >
