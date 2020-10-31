@@ -13,7 +13,6 @@ const nodeStyles = [
       'transition-timing-function': 'ease-in-sine',
       'background-color': sunsetOrange[600],
       'background-image': 'data(avatarUrl)',
-      'background-size': 'inherit',
       label: 'data(login)'
     }
   }

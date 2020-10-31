@@ -39,8 +39,7 @@ const Forks = () => {
       owner: project.owner,
       limit: project.limit
     }).then(res => {
-      if (res) {
-        console.log(res);
+      if (res.data.data?.repository) {
         const gazers = res.data.data.repository.forks.edges;
         gazers.forEach(ele => {
           const node = {
