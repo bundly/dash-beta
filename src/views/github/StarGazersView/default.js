@@ -1,12 +1,16 @@
+import { getUsername } from 'src/scripts/githubAPI';
+
+const owner = getUsername();
+
 export const options = {
+  owner,
   name: 'fifa-api',
-  owner: 'sauravhiremath',
   limit: 100
 };
 
 export const initialNode = {
   data: {
-    id: 'base-id',
+    id: `${owner}-${options.name}`,
     generation: 0
   }
 };

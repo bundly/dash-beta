@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core';
 import cytoscape from 'cytoscape';
 import cola from 'cytoscape-cola';
+import rcolor from 'rcolor';
 
 import style from './style';
 
@@ -11,7 +12,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const Graph = ({ elements, updateGraph }) => {
+const Graph = ({ elements, updateGraph, clusterAlgo }) => {
   const classes = useStyles();
 
   const container = useRef(null);
@@ -28,20 +29,37 @@ const Graph = ({ elements, updateGraph }) => {
         name: 'cola'
       });
 
-      // Calculate centrality
       const dcn = graph.current.elements().dcn();
       const ccn = graph.current.elements().ccn();
       const bc = graph.current.elements().bc();
       const pageRank = graph.current.elements().pageRank();
-      const clusters = graph.current.elements().mcl({ inflateFactor: 1.5 });
-
-      // Assign random colors to each cluster!
-      clusters.forEach(ele => {
-        ele.style({
-          borderColor: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
-          borderWidth: '8px'
+      if (clusterAlgo) {
+        let clusters;
+        switch (clusterAlgo) {
+          case 'mcl':
+            clusters = graph.current.elements().mcl({ inflateFactor: 1.5 });
+            break;
+          case 'kMeans':
+            clusters = graph.current.elements().kMeans({ k: 4 });
+            break;
+          case 'kMedoids':
+            clusters = graph.current.elements().kMedoids({ k: 4 });
+            break;
+          case 'hca':
+            clusters = graph.current.elements().hca();
+            break;
+          default:
+            clusters = graph.current.elements().mcl({ inflateFactor: 1.5 });
+            break;
+        }
+        // Assign random colors to each cluster!
+        clusters.forEach(ele => {
+          ele.style({
+            borderColor: rcolor(),
+            borderWidth: '8px'
+          });
         });
-      });
+      }
 
       graph.current.nodes().forEach(n => {
         n.data({
@@ -54,7 +72,7 @@ const Graph = ({ elements, updateGraph }) => {
 
       layout.current.run();
     }
-  }, [elements]);
+  }, [elements, clusterAlgo]);
 
   useEffect(() => {
     if (!container.current) {
