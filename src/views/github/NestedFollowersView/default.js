@@ -1,12 +1,19 @@
+import { getAvatar, getUsername } from 'src/scripts/githubAPI';
+
+const owner = getUsername();
+const avatarUrl = getAvatar();
+
 export const options = {
-  owner: 'sauravhiremath',
+  owner,
   limit1: 5,
   limit2: 5
 };
 
 export const initialNode = {
   data: {
-    id: 'sauravhiremath',
+    id: owner,
+    avatarUrl,
+    login: owner,
     generation: 0
   }
 };

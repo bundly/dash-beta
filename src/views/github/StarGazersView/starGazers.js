@@ -39,8 +39,7 @@ const StarGazers = () => {
       owner: project.owner,
       limit: project.limit
     }).then(res => {
-      if (res) {
-        console.log(res);
+      if (res.data?.data) {
         const gazers = res.data.data.repository.stargazers.edges;
         gazers.forEach(ele => {
           const node = {
@@ -53,7 +52,7 @@ const StarGazers = () => {
           };
           const edge = {
             data: {
-              source: 'base-id',
+              source: `${project.owner}-${project.name}`,
               target: ele.node.avatarUrl,
               generation: 0
             }
@@ -86,7 +85,7 @@ const StarGazers = () => {
               className={classes.input}
               id="owner"
               label="Owner"
-              defaultValue="sauravhiremath"
+              defaultValue={project.owner}
               onInput={e => {
                 e.persist();
                 setTempOpt(prev => ({ ...prev, owner: e.target.value }));

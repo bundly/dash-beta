@@ -18,6 +18,13 @@ export function getToken() {
   };
 }
 
+export function getAvatar() {
+  const bundlyToken = localStorage.getItem('bundly-token');
+  let avatarUrl;
+  if (bundlyToken) avatarUrl = JSON.parse(atob(bundlyToken)).avatar;
+  return avatarUrl;
+}
+
 export function getUsername() {
   const bundlyToken = localStorage.getItem('bundly-token');
   let username;

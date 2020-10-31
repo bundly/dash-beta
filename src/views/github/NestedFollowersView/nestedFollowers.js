@@ -6,7 +6,11 @@ import {
   Card,
   CardContent,
   CardHeader,
+  FormControl,
+  InputLabel,
   Button,
+  MenuItem,
+  Select,
   TextField,
   Typography,
   makeStyles,
@@ -26,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1, 0, 1, 0)
   },
   name: {
-    margin: theme.spacing(1, 2, 1, 2)
+    margin: theme.spacing(1, 1, 1, 1)
   },
   avatar: {
     width: theme.spacing(14),
@@ -44,6 +48,7 @@ const StarGazers = () => {
   const [values, setValues] = useState([initialNode]);
   const [currentNode, setCurrentNode] = useState(currentNodeFill);
   const [reRender, triggerRender] = useState(0);
+  const [cluster, setCluster] = useState('mcl');
 
   useEffect(() => {
     getNestedFollowers({
@@ -51,8 +56,7 @@ const StarGazers = () => {
       limit1: project.limit1,
       limit2: project.limit2
     }).then(res => {
-      if (res) {
-        console.log(res);
+      if (res.data.data?.user) {
         // Build Network Graph
         const followers1g = res.data.data.user.followers.nodes;
         followers1g.forEach(follower1g => {
@@ -194,13 +198,14 @@ const StarGazers = () => {
                     elements={values}
                     key={reRender}
                     updateGraph={onGraphUpdate}
+                    clusterAlgo={cluster}
                   />
                 </CardContent>
               </Card>
             </Grid>
             <Grid item lg={2} sm={2} xl={2} xs={12}>
               <Card>
-                <CardHeader title="Live Centralities" />
+                <CardHeader title="Configure Options" />
                 <Divider />
                 <CardContent>
                   <Avatar
@@ -251,6 +256,24 @@ const StarGazers = () => {
                     }}
                     variant="filled"
                   />
+                  <FormControl fullWidth className={classes.centrality}>
+                    <InputLabel id="cluster-label">
+                      Clustering Algorithm
+                    </InputLabel>
+                    <Select
+                      className={classes.centrality}
+                      labelId="cluster"
+                      id="cluster"
+                      value={cluster}
+                      onChange={e => setCluster(e.target.value)}
+                    >
+                      <MenuItem value="mcl">Markov</MenuItem>
+                      <MenuItem value="kmeans">kMeans</MenuItem>
+                      <MenuItem value="kMedoids">kMedoids</MenuItem>
+                      <MenuItem value="hca">hierarchical</MenuItem>
+                      <MenuItem value="ap">affinityPropagation</MenuItem>
+                    </Select>
+                  </FormControl>
                 </CardContent>
               </Card>
             </Grid>
