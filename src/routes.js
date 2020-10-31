@@ -7,6 +7,9 @@ import DashboardView from 'src/views/DashboardView';
 import LoginView from 'src/views/auth/LoginView';
 import NotFoundView from 'src/views/errors/NotFoundView';
 import StandUpNotesView from 'src/views/github/StandUpNotesView';
+import StarGazersView from 'src/views/github/StarGazersView';
+import ForksView from 'src/views/github/ForksView';
+import NestedFollowersView from 'src/views/github/NestedFollowersView';
 import AuthCallbackView from 'src/views/auth/AuthCallback';
 import SettingsView from 'src/views/settings/SettingsView';
 
@@ -25,6 +28,9 @@ const routes = [
     children: [
       { path: 'dashboard', element: <DashboardView /> },
       { path: 'standups', element: <StandUpNotesView /> },
+      { path: 'stargazers', element: <StarGazersView /> },
+      { path: 'forks', element: <ForksView /> },
+      { path: 'nestedFollowers', element: <NestedFollowersView /> },
       { path: 'account', element: <AccountView /> },
       { path: 'customers', element: <CustomerListView /> },
       { path: 'settings', element: <SettingsView /> },

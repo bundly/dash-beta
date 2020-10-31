@@ -1,4 +1,10 @@
 import axios from 'axios';
+import {
+  summaryQuery,
+  starGazersQuery,
+  forksQuery,
+  nestedFollowersQuery
+} from './queries';
 
 export function getToken() {
   const bundlyToken = localStorage.getItem('bundly-token');
@@ -19,90 +25,6 @@ export function getUsername() {
   return username;
 }
 
-export const summaryQuery = `
-query summaryQuery($from: DateTime!, $username: [String!]) {
-  viewer {
-    organization(login: "MLH-Fellowship") {
-      team(slug: "mlh-fellows-summer-2020") {
-        childTeams(userLogins: $username, first: 5) {
-          nodes {
-            discussions(first: 10, orderBy: {field: CREATED_AT, direction: DESC}) {
-              nodes {
-                title
-                createdAt
-                url
-                comments(first: 15) {
-                  nodes {
-                    author {
-                      login
-                    }
-                    body
-                  }
-                }
-              }
-            }
-            name
-            slug
-            discussionsUrl
-          }
-        }
-      }
-    }
-    issueComments(last: 100) {
-      nodes {
-        updatedAt
-      }
-    }
-    contributionsCollection(from: $from) {
-      commitContributionsByRepository(maxRepositories: 10) {
-        resourcePath
-        repository {
-          nameWithOwner
-          url
-        }
-        contributions(orderBy: {field: OCCURRED_AT, direction: ASC}) {
-          totalCount
-        }
-      }
-      issueContributions(last: 100) {
-        nodes {
-          issue {
-            title
-            number
-            url
-          }
-        }
-        totalCount
-      }
-      pullRequestContributions(last: 100) {
-        nodes {
-          pullRequest {
-            state
-            title
-            url
-            number
-          }
-        }
-        totalCount
-      }
-      pullRequestReviewContributions(last: 100) {
-        nodes {
-          pullRequest {
-            number
-            url
-            title
-          }
-        }
-      }
-      startedAt
-      totalCommitContributions
-      totalIssueContributions
-      totalPullRequestContributions
-      totalPullRequestReviewContributions
-    }
-  }
-}`;
-
 export function markNotification(id) {
   // console.log(`Using`,  getToken())
   return axios.patch(
@@ -112,25 +34,64 @@ export function markNotification(id) {
   );
 }
 
-export function githubQuery({ time }) {
+export function getSummary({ time, limit, username }) {
   // console.log(getToken(), getUsername())
 
   const targetTime = new Date(time);
   targetTime.setDate(targetTime.getDate() - 1);
+
   return axios({
     url: 'https://api.github.com/graphql',
     method: 'post',
     data: JSON.stringify({
       query: summaryQuery,
-      variables: { from: targetTime.toISOString(), username: getUsername() }
+      variables: { from: targetTime.toISOString(), username: [username], limit }
     }),
     headers: getToken().header
   });
 }
+
+export function getStarGazers({ name, owner, limit }) {
+  return axios({
+    url: 'https://api.github.com/graphql',
+    method: 'post',
+    data: JSON.stringify({
+      query: starGazersQuery,
+      variables: { name, owner, limit }
+    }),
+    headers: getToken().header
+  });
+}
+
+export function getForks({ name, owner, limit }) {
+  return axios({
+    url: 'https://api.github.com/graphql',
+    method: 'post',
+    data: JSON.stringify({
+      query: forksQuery,
+      variables: { name, owner, limit }
+    }),
+    headers: getToken().header
+  });
+}
+
+export function getNestedFollowers({ owner, limit1, limit2 }) {
+  return axios({
+    url: 'https://api.github.com/graphql',
+    method: 'post',
+    data: JSON.stringify({
+      query: nestedFollowersQuery,
+      variables: { owner, limit1, limit2 }
+    }),
+    headers: getToken().header
+  });
+}
+
 export const githubNotificationFetcher = () =>
   axios.get('https://api.github.com/notifications', {
     headers: getToken().header
   });
+
 export const githubSearch = text =>
   axios.get(
     `https://api.github.com/search/issues?q=${encodeURI(

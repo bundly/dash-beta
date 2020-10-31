@@ -34,10 +34,11 @@ function getSuggestions(discussions, username) {
 
 export default function yesterdayNotes(datadump, currentTime) {
   const username = getUsername();
-  let yesterday =
-    '> Generated using [@bundly](https://github.com/bundly)\r\n\r\n**Yesterday**:\r\n ';
+  let yesterday = '> Generated using [@bundly](https://github.com/bundly)\r\n\r\n**Yesterday**:\r\n ';
+
   const summaryData = datadump.data.viewer;
   const commentCount = getCommentCount(summaryData.issueComments, currentTime);
+
   summaryData.contributionsCollection.pullRequestContributions.nodes.map(pr => {
     pr = pr.pullRequest;
     yesterday = yesterday.concat(
@@ -48,6 +49,7 @@ export default function yesterdayNotes(datadump, currentTime) {
       })\r\n `
     );
   });
+
   summaryData.contributionsCollection.pullRequestReviewContributions.nodes.map(
     review => {
       const pr = review.pullRequest;
@@ -56,6 +58,7 @@ export default function yesterdayNotes(datadump, currentTime) {
       );
     }
   );
+
   summaryData.contributionsCollection.commitContributionsByRepository.map(
     contribution => {
       yesterday = yesterday.concat(
@@ -63,6 +66,7 @@ export default function yesterdayNotes(datadump, currentTime) {
       );
     }
   );
+
   summaryData.contributionsCollection.issueContributions.nodes.map(
     _issueContribution => {
       if (_issueContribution) {
@@ -73,6 +77,7 @@ export default function yesterdayNotes(datadump, currentTime) {
       }
     }
   );
+
   if (commentCount > 0) {
     yesterday = yesterday.concat(
       `\r\n - ${commentCount} Comments on Issue Discussions 💬\r\n `
@@ -80,6 +85,7 @@ export default function yesterdayNotes(datadump, currentTime) {
   }
 
   yesterday = yesterday.concat('\r\n**Today:**\r\n ');
+
   try {
     yesterday = yesterday.concat(
       getSuggestions(summaryData.organization.team.childTeams, username)
