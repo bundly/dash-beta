@@ -135,7 +135,7 @@ const Forks = () => {
         <Divider />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item lg={10} sm={10} xl={10} xs={12}>
+            <Grid item xl={10} lg={10} sm={8} xs={12}>
               <Card>
                 <CardContent>
                   <form
@@ -218,7 +218,7 @@ const Forks = () => {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item xl={2} lg={2} sm={6} xs={12}>
+            <Grid item xl={2} lg={2} sm={4} xs={12}>
               <Card>
                 <CardHeader title="Summary" />
                 <Divider />
