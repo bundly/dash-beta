@@ -19,7 +19,7 @@ export const initialNode = {
 };
 
 export const currentNodeFill = {
-  login: 'Anonymous',
+  login: 'Node not selected',
   avatarUrl: '',
   dcn: 0,
   ccn: 0,
