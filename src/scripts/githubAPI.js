@@ -3,7 +3,8 @@ import {
   summaryQuery,
   starGazersQuery,
   forksQuery,
-  nestedFollowersQuery
+  nestedFollowersQuery,
+  topRepositoryQuery
 } from './queries';
 
 export function getToken() {
@@ -30,6 +31,22 @@ export function getUsername() {
   let username;
   if (bundlyToken) username = JSON.parse(atob(bundlyToken)).username;
   return username;
+}
+
+export async function getTopRepo() {
+  const req = await axios({
+    url: 'https://api.github.com/graphql',
+    method: 'post',
+    data: JSON.stringify({ query: topRepositoryQuery }),
+    headers: getToken().header
+  });
+
+  let res = { name: '', owner: { login: '' } };
+  if (!req.data.errors) {
+    // eslint-disable-next-line prefer-destructuring
+    res = req.data.data.viewer.topRepositories.nodes[0];
+  }
+  return res;
 }
 
 export function markNotification(id) {
