@@ -205,7 +205,7 @@ const StarGazers = () => {
             </Grid>
             <Grid item lg={2} sm={2} xl={2} xs={12}>
               <Card>
-                <CardHeader title="Configure Options" />
+                <CardHeader title="Node Summary" />
                 <Divider />
                 <CardContent>
                   <Avatar
