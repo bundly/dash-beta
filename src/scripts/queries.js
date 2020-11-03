@@ -99,12 +99,13 @@ query starGazersQuery($name: String!, $owner: String!, $limit: Int!) {
 }`;
 
 export const forksQuery = `
-query starGazersQuery($name: String!, $owner: String!, $limit: Int!) {
+query forksQuery($name: String!, $owner: String!, $limit: Int!) {
   repository(name: $name, owner: $owner) {
     forks(last: $limit) {
       totalCount
       edges {
         node {
+          name
           owner {
             avatarUrl
             login
@@ -116,7 +117,7 @@ query starGazersQuery($name: String!, $owner: String!, $limit: Int!) {
 }`;
 
 export const nestedFollowersQuery = `
-query starGazersQuery($owner: String!, $limit1: Int!, $limit2: Int!) {
+query nestedFollowersQuery($owner: String!, $limit1: Int!, $limit2: Int!) {
   user(login: $owner) {
     followers(last: $limit1) {
       nodes {
@@ -131,6 +132,21 @@ query starGazersQuery($owner: String!, $limit1: Int!, $limit2: Int!) {
       }
     }
   }
-}
+}`;
 
-`;
+export const topRepositoryQuery = `
+query topRepositoryQuery {
+  viewer {
+    topRepositories(orderBy: {field: STARGAZERS, direction: DESC}, first: 1) {
+      nodes {
+        name
+        owner {
+          login
+        }
+        stargazers {
+          totalCount
+        }
+      }
+    }
+  }
+}`;
