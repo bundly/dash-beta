@@ -19,7 +19,7 @@ import {
 import SendIcon from '@material-ui/icons/Send';
 
 import Graph from '../../../components/Graph';
-import { options, initialNode, currentNodeFill } from './default';
+import { options, initialNode, currentNodeFill } from './options';
 import { getNestedFollowers } from '../../../scripts/githubAPI';
 
 const useStyles = makeStyles(theme => ({
@@ -145,7 +145,7 @@ const StarGazers = () => {
                       className={classes.box}
                       id="owner"
                       label="Owner"
-                      defaultValue="sauravhiremath"
+                      value={tempOpt.owner}
                       onInput={e => {
                         e.persist();
                         setTempOpt(prev => ({
@@ -160,7 +160,7 @@ const StarGazers = () => {
                       id="limit1"
                       label="1st Gen Limit (last x)"
                       type="text"
-                      defaultValue={project.limit1}
+                      value={tempOpt.limit1}
                       onInput={e => {
                         e.persist();
                         setTempOpt(prev => ({
@@ -175,7 +175,7 @@ const StarGazers = () => {
                       id="limit2"
                       label="2nd Gen Limit (last x)"
                       type="text"
-                      defaultValue={project.limit2}
+                      value={tempOpt.limit2}
                       onInput={e => {
                         e.persist();
                         setTempOpt(prev => ({
