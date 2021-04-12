@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Avatar,
   Box,
   Divider,
   Card,
@@ -117,7 +116,7 @@ const StarGazers = () => {
   return (
     <Box>
       <Card>
-        <CardHeader title="Follower's Followers" />
+        <CardHeader title="Protein Relations" />
         <Divider />
         <CardContent>
           <Grid container spacing={2}>
@@ -208,11 +207,11 @@ const StarGazers = () => {
                 <CardHeader title="Node Summary" />
                 <Divider />
                 <CardContent>
-                  <Avatar
+                  {/* <Avatar
                     alt={currentNode.login}
                     src={currentNode.avatarUrl}
                     className={classes.avatar}
-                  />
+                  /> */}
                   <Typography className={classes.name} variant="subtitle2">
                     {currentNode.login}
                   </Typography>

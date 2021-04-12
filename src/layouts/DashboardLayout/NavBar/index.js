@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
-  Avatar,
   Box,
   Divider,
   Drawer,
@@ -13,13 +12,6 @@ import {
 } from '@material-ui/core';
 import {
   AlertCircle as AlertCircleIcon,
-  Trello as TrelloIcon,
-  Settings as SettingsIcon,
-  FileText as FileTextIcon,
-  User as UserIcon,
-  List as ListIcon,
-  Star as StarIcon,
-  GitBranch as GitBranchIcon,
   Users as UsersIcon
 } from 'react-feather';
 import NavItem from './NavItem';
@@ -46,44 +38,9 @@ const user = {
 
 const items = [
   {
-    href: '/app/dashboard',
-    icon: TrelloIcon,
-    title: 'Dashboard'
-  },
-  {
-    href: '/app/standups',
-    icon: FileTextIcon,
-    title: 'Daily Standup'
-  },
-  {
-    href: '/app/noter',
-    icon: ListIcon,
-    title: 'Notes'
-  },
-  {
-    href: '/app/stargazers',
-    icon: StarIcon,
-    title: 'Star Gazers Network'
-  },
-  {
-    href: '/app/forks',
-    icon: GitBranchIcon,
-    title: 'Forks Network'
-  },
-  {
-    href: '/app/nestedFollowers',
+    href: '/app/relations',
     icon: UsersIcon,
-    title: 'Follower\'s Followers'
-  },
-  {
-    href: '/app/account',
-    icon: UserIcon,
-    title: 'Account'
-  },
-  {
-    href: '/app/settings',
-    icon: SettingsIcon,
-    title: 'Settings'
+    title: 'Protein Relations'
   },
   {
     href: 'https://github.com/bundly/dash-beta/issues/new',
@@ -123,12 +80,6 @@ const NavBar = ({ onMobileClose, openMobile }) => {
   const content = (
     <Box height="100%" display="flex" flexDirection="column">
       <Box alignItems="center" display="flex" flexDirection="column" p={2}>
-        <Avatar
-          className={classes.avatar}
-          component={RouterLink}
-          src={user.avatar}
-          to="/app/account"
-        />
         <Typography className={classes.name} color="textPrimary" variant="h5">
           {user.name}
         </Typography>

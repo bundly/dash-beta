@@ -18,7 +18,7 @@ const StarGazers = () => {
   const classes = useStyles();
 
   return (
-    <Page className={classes.root} title="Follower's Followers">
+    <Page className={classes.root} title="Protein Relations">
       <Container maxWidth={false}>
         <NestedFollowersGen />
       </Container>
